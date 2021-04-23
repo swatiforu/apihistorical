@@ -12,11 +12,11 @@ def getlastval():
   ticker = request.args['Ticker']
   vals = fb.get('historicaldatafyp-default-rtdb/Stocks/'+ticker,'')
   df = pd.DataFrame(vals)
-  return df.tail(1).values
+  return df.tail(1).T.to_dict()
 
 @app.route('/get30val/',methods=['GET'])
 def get30val():
   ticker = request.args['Ticker']
   vals = fb.get('historicaldatafyp-default-rtdb/Stocks/'+ticker,'')
   df = pd.DataFrame(vals)
-  return df.tail(30).values
+  return df.tail(30).T.to_dict()
