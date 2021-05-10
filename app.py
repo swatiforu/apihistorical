@@ -9,10 +9,15 @@ fb = firebase.FirebaseApplication('https://historicaldatafyp-default-rtdb.fireba
 
 @app.route('/getlastval/', methods=['GET'])
 def getlastval():
-  ticker = request.args['Ticker']
+  with open('abc.txt','w') as file:
+    file.write("123")
+  with open('abc.txt', 'r') as file:
+    lines = file.read()
+    return lines
+  """ticker = request.args['Ticker']
   vals = fb.get('historicaldatafyp-default-rtdb/Stocks/'+ticker,'')
   df = pd.DataFrame(vals)
-  return df.tail(1).T.to_dict()
+  return df.tail(1).T.to_dict()"""
 
 @app.route('/get30val/',methods=['GET'])
 def get30val():
